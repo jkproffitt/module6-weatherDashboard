@@ -1,0 +1,19 @@
+:root {
+    --white: #fff;
+    --blue: #3d5170;
+    --grey: grey;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+button {
+    background: var(--blue);
+    border: none;
+    color: var(--white);
+}
+
+.placeholder { 
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+}
