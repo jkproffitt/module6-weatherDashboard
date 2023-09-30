@@ -5,6 +5,14 @@
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+h1 {
+    background: var(--blue);
+    display: flex;
+    justify-content: end;
+    color: white;
+    padding-right: 4rem;
+}
+
 button {
     background: var(--blue);
     border: none;
