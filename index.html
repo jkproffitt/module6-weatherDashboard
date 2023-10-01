@@ -13,7 +13,7 @@
 			<div class="col-12 col-md-3 bg-light p-3">
 				<h1 class="text-primary">Weather Dashboard</h1>
 				<form id="search-form" class="mb-2">
-					<label
+					<label for="search-input"
 						>Search
 						<input
 							id="search-input"
@@ -22,15 +22,14 @@
 							placeholder="Enter a City name"
 					/></label>
 
-					<button class="btn btn-info btn-block" onclick="search()">
+					<button type="submit" class="btn btn-info btn-block">
 						Search
 					</button>
 				</form>
 			</div>
 			<div>
-				<aside></aside>
 				<div class="col-12 col-md-9 p-3 text-light">
-					<h2>Showing results for <span id="result-text"></span></h2>
+					<h2>Showing results for: <span id="result-text"></span></h2>
 					<div id="result-content"></div>
 					<h3>5 Day forcast</h3>
 					<div id="5day"></div>
