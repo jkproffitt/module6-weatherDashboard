@@ -17,7 +17,6 @@ var formSubmitHandler = function (event) {
 	event.preventDefault();
 
 	var city = cityInput.value.trim();
-	console.log(city);
 
 	if (city) {
 		getCityWeather(city);
@@ -27,7 +26,6 @@ var formSubmitHandler = function (event) {
 };
 
 var buttonClickHandler = function (event) {
-	console.log(event.target.innerHTML);
 	var city = event.target.innerHTML;
 	if (city) {
 		getCityWeather(city);
@@ -52,7 +50,6 @@ function buildHistoryButtons() {
 }
 
 function buildCurrentWeather(currentCityObj) {
-	console.log(currentCityObj.temp);
 	var date = currentCityObj.date;
 	var weatherIcon = currentCityObj.weatherIcon;
 	var temp = currentCityObj.temp;
@@ -96,17 +93,13 @@ function fiveDaySummary(fiveDayArray) {
 		var currentWind = fiveDayArray[i].wind.speed;
 		var currentHumid = fiveDayArray[i].main.humidity;
 		if (savedDay == currentDay && i < fiveDayArray.length - 1) {
-			// console.log('day is same ' + savedDay);
 			savedTemp += currentTemp;
 			savedWind += currentWind;
 			savedHumid += currentHumid;
-			// console.log(savedTemp + ' ' + savedHumid + ' ' + savedWind);
 		} else {
-			// console.log('day change' + currentDay);
 			savedTemp = savedTemp / 8;
 			savedWind = savedWind / 8;
 			savedHumid = savedHumid / 8;
-			// console.log(savedTemp + ' ' + savedHumid + ' ' + savedWind);
 			fiveDayObject.push({
 				date: currentDay,
 				weatherIcon: fiveDayArray[i].weather[0].icon,
@@ -120,9 +113,7 @@ function fiveDaySummary(fiveDayArray) {
 			savedWind = 0;
 		}
 	}
-	console.log(fiveDayObject);
 	for (i = 0; i < fiveDayObject.length; i++) {
-		// console.log('calling build');
 		buildDailyWeather(fiveDayObject[i]);
 	}
 }
@@ -133,12 +124,12 @@ function buildDailyWeather(currentCityObj) {
 	var temp = currentCityObj.temp;
 	var wind = currentCityObj.wind;
 	var humidity = currentCityObj.humidity;
+	var weatherEl = document.createElement('div');
+	weatherEl.classList =
+		' forecast-card list-item flex-row justify-space-between align-center';
 
 	var dateEl = document.createElement('h3');
 	dateEl.innerHTML = date;
-	var weatherEl = document.createElement('div');
-	weatherEl.classList =
-		'list-item flex-row justify-space-between align-center';
 	var weatherIcEl = document.createElement('img');
 	weatherIcEl.src =
 		'http://openweathermap.org/img/wn/' + weatherIcon + '.png';
@@ -177,7 +168,6 @@ var getCityWeather = async function (city) {
 			lat: city.coord.lat,
 			lon: city.coord.lon,
 		};
-		console.log(updateCityObj);
 		cityObj.push(updateCityObj);
 		localStorage.setItem('city', JSON.stringify(cityObj));
 
@@ -203,7 +193,6 @@ var getCityWeather = async function (city) {
 			}
 		})
 		.then(function (data) {
-			console.log(data);
 			displayCity(data);
 		});
 	buildCurrentWeather(currentCityObj);
@@ -212,13 +201,10 @@ var getCityWeather = async function (city) {
 
 //shows the 5 day forcast for the city with imperial units
 var getFiveDayForecast = function (city) {
-	console.log(city);
 	var cityHistory = JSON.parse(localStorage.getItem('city'));
-	console.log(cityHistory);
 	cityHistoryData = cityHistory.filter(function (obj) {
 		return obj.name == city;
 	});
-	console.log(cityHistoryData);
 	var lat = cityHistoryData[0].lat;
 	var lon = cityHistoryData[0].lon;
 	var fiveDayqueryURL =
@@ -235,7 +221,6 @@ var getFiveDayForecast = function (city) {
 			return response.json();
 		})
 		.then(function (data) {
-			console.log(data);
 			fiveDaySummary(data.list);
 		});
 };

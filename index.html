@@ -3,45 +3,40 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+
 		<title>Weather Dashboard</title>
 		<link rel="stylesheet" href="./assets/css/styles.css" />
-        
-
 	</head>
 	<body>
+		<h1 class="text-primary">Weather Dashboard</h1>
 		<div
-			class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary"
+			class="parent flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary"
 		>
-			<div class="col-12 col-md-3 bg-light p-3">
-				<h1 class="text-primary">Weather Dashboard</h1>
+			<div class="left col-3 col-md-3 bg-light p-3">
 				<form id="search-form" class="mb-2">
 					<label for="search-input"
-						>Search
+						>Search:
 						<input
 							id="search-input"
 							class="form-input w-100"
 							type="text"
-							placeholder="Enter a City name"
+							placeholder="Enter a city name"
 					/></label>
 					<button type="submit" class="btn btn-info btn-block">
 						Search
 					</button>
 				</form>
-				<div><h2>Past Cities:</h2>
-                <div id="search-history"></div>
+				<h2>Past Cities:</h2>
+				<div id="search-history"></div>
 			</div>
-			<div>
-				<div class="col-12 col-md-9 p-3 text-light">
-					<h2>Showing results for: <span id="result-text"></span></h2>
-                    
-					<div id="result-content"></div>
-					<h3>5 Day forcast</h3>
-					<div id="fiveDay"></div>
-				</div>
+			<div class="right col-12 col-md-9 p-3 text-light">
+				<h2>Showing results for: <span id="result-text"></span></h2>
+				<div id="result-content"></div>
+				<h3>5 Day forcast</h3>
+				<div id="fiveDay"></div>
 			</div>
 		</div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="./assets/js/script.js"></script>
 	</body>
 </html>

@@ -1,17 +1,41 @@
 :root {
     --white: #fff;
-    --blue: #3d5170;
+    --orange: #cdb976;
     --lightBlue: #bdd2e3;
     --grey: #767676;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 .5rem;
+}
+.parent{
+    display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+}
+
+.left {
+    grid-area: 1 / 1 / 2 / 2;
+    padding-right: 1rem;
+}
+
+.right {
+    grid-area: 1 / 2 / 2 / 6;
+    margin-left: 2%;
+}
 h1 {
-    background: var(--blue);
+    background: #1b0f6ef7;
     display: flex;
     justify-content: end;
     color: white;
     padding-right: 4rem;
+    border-radius: .25rem;
 }
 .today-weather {
     padding: 0.5rem;
@@ -19,12 +43,40 @@ h1 {
     border-radius: .25rem;
 }
 
+#fiveDay {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.forecast-card {
+    margin: 0.5rem ;
+    width: 20%;
+    padding: 0.5rem;
+    background: var(--orange);
+    border-radius: .25rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+input {
+    margin: 0.5rem 0rem;
+    width:100%;
+}
+
 button {
-    background: var(--blue);
+    background: var(--grey);
     border: none;
     border-radius: .25rem;
     color: var(--white);
     margin: .25rem;
+    width: 100%;
+}
+button:hover {
+    background: #1b0f6ef7;
+    color: var(--white);
 }
 
 .placeholder { 
