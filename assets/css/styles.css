@@ -1,7 +1,8 @@
 :root {
     --white: #fff;
     --blue: #3d5170;
-    --grey: grey;
+    --lightBlue: #bdd2e3;
+    --grey: #767676;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -12,11 +13,18 @@ h1 {
     color: white;
     padding-right: 4rem;
 }
+.today-weather {
+    padding: 0.5rem;
+    background: var(--lightBlue);
+    border-radius: .25rem;
+}
 
 button {
     background: var(--blue);
     border: none;
+    border-radius: .25rem;
     color: var(--white);
+    margin: .25rem;
 }
 
 .placeholder { 
