@@ -151,7 +151,7 @@ function buildDailyWeather(currentCityObj) {
 
 var getCityWeather = async function (city) {
 	var queryURL =
-		'http://api.openweathermap.org/data/2.5/weather?q=' +
+		'https://api.openweathermap.org/data/2.5/weather?q=' +
 		city +
 		'&units=imperial&appid=' +
 		apiKey;
