@@ -17,7 +17,6 @@ var formSubmitHandler = function (event) {
 	event.preventDefault();
 
 	var city = cityInput.value.trim();
-
 	if (city) {
 		getCityWeather(city);
 	} else {
@@ -26,7 +25,7 @@ var formSubmitHandler = function (event) {
 };
 
 var buttonClickHandler = function (event) {
-	var city = event.target.innerHTML;
+	var city = event.target.textContent;
 	if (city) {
 		getCityWeather(city);
 	} else {
@@ -55,6 +54,7 @@ function buildCurrentWeather(currentCityObj) {
 	var temp = currentCityObj.temp;
 	var wind = currentCityObj.wind;
 	var humidity = currentCityObj.humidity;
+	resultContentEl.replaceChildren();
 	var weatherEl = document.createElement('div');
 	weatherEl.classList =
 		'today-weather list-item flex-row justify-space-between align-center';
@@ -113,6 +113,7 @@ function fiveDaySummary(fiveDayArray) {
 			savedWind = 0;
 		}
 	}
+	fiveDayContentEl.replaceChildren();
 	for (i = 0; i < fiveDayObject.length; i++) {
 		buildDailyWeather(fiveDayObject[i]);
 	}
@@ -168,7 +169,9 @@ var getCityWeather = async function (city) {
 			lat: city.coord.lat,
 			lon: city.coord.lon,
 		};
-		cityObj.push(updateCityObj);
+		if (!cityObj.some((e) => e.name == updateCityObj.name)) {
+			cityObj.push(updateCityObj);
+		}
 		localStorage.setItem('city', JSON.stringify(cityObj));
 
 		currentCityObj = {
@@ -179,6 +182,7 @@ var getCityWeather = async function (city) {
 			wind: city.wind.speed,
 			humidity: city.main.humidity,
 		};
+		getFiveDayForecast(updateCityObj);
 	};
 	await fetch(queryURL, {
 		// The browser fetches the resource from the remote server without first looking in the cache.
@@ -196,7 +200,6 @@ var getCityWeather = async function (city) {
 			displayCity(data);
 		});
 	buildCurrentWeather(currentCityObj);
-	getFiveDayForecast(city);
 };
 
 //shows the 5 day forcast for the city with imperial units
@@ -205,8 +208,13 @@ var getFiveDayForecast = function (city) {
 	cityHistoryData = cityHistory.filter(function (obj) {
 		return obj.name == city;
 	});
-	var lat = cityHistoryData[0].lat;
-	var lon = cityHistoryData[0].lon;
+	if (city) {
+		var lat = city.lat;
+		var lon = city.lon;
+	} else {
+		var lat = cityHistoryData[0].lat;
+		var lon = cityHistoryData[0].lon;
+	}
 	var fiveDayqueryURL =
 		'https://api.openweathermap.org/data/2.5/forecast?lat=' +
 		lat +
