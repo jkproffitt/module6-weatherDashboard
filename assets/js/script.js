@@ -63,11 +63,11 @@ function buildCurrentWeather(currentCityObj) {
 	var weatherIcEl = document.createElement('img');
 	weatherIcEl.src =
 		'http://openweathermap.org/img/wn/' + weatherIcon + '.png';
-	var tempEl = document.createElement('li');
+	var tempEl = document.createElement('ul');
 	tempEl.textContent = 'Temperature ' + temp + '°F';
-	var windEl = document.createElement('li');
+	var windEl = document.createElement('ul');
 	windEl.textContent = 'Wind Speed ' + wind + ' MPH';
-	var humidityEl = document.createElement('li');
+	var humidityEl = document.createElement('ul');
 	humidityEl.textContent = 'Humidity ' + humidity + '%';
 
 	weatherEl.appendChild(dateEl);
@@ -133,11 +133,11 @@ function buildDailyWeather(currentCityObj) {
 	var weatherIcEl = document.createElement('img');
 	weatherIcEl.src =
 		'http://openweathermap.org/img/wn/' + weatherIcon + '.png';
-	var tempEl = document.createElement('li');
+	var tempEl = document.createElement('ul');
 	tempEl.textContent = 'Temperature ' + temp + '°F';
-	var windEl = document.createElement('li');
+	var windEl = document.createElement('ul');
 	windEl.textContent = 'Wind Speed ' + wind + ' MPH';
-	var humidityEl = document.createElement('li');
+	var humidityEl = document.createElement('ul');
 	humidityEl.textContent = 'Humidity ' + humidity + '%';
 
 	weatherEl.appendChild(dateEl);
