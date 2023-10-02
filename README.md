@@ -1,5 +1,7 @@
 # module6-weatherDashboard
 
+[deployed website](https://jkproffitt.github.io/module6-weatherDashboard/)
+
 ## 06 Server-Side APIs: Weather Dashboard
 
 ## Your Task
